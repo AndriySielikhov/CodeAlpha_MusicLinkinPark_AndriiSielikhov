@@ -20,7 +20,9 @@ body {
   margin: 0;
   padding: 0;
   color: #FFFFFF;
-  background-color: #0A0A0A;
+  background: url(./image/fon-1.jpg) no-repeat center center/cover;;
+  overflow: hidden; /* Заборонити прокрутку */
+  height: 100%;
 }
 
 
@@ -245,7 +247,6 @@ nav ul li a:hover {
 /* Сторінка плейлістів */
 #playlists {
   text-align: center;
-  background: url('./image/fon-1.jpg') no-repeat center center/cover;
 }
 
 .playlist-carousel {
@@ -431,19 +432,145 @@ nav ul li a:hover {
 
 
 
-/* Сторінка історії */
-#history {
-  text-align: center;
-}
 
-.history-content {
-  max-width: 800px;
+
+
+
+
+
+
+
+
+
+
+
+
+/* Стилі для контейнера історії */
+.history-wrapper {
+  max-width: 1300px;
   margin: 0 auto;
+  padding: 10px;
+  background-size: cover; /* Розтягнути на весь екран */
+  min-height: 100vh; /* Мінімальна висота на весь екран */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff; /* Колір тексту для контрасту */
+  box-sizing: border-box; /* Щоб padding не збільшував розміри */
 }
 
-.history-content img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 10px;
-  margin-top: 20px;
+/* Стилі для блоку з історією гурту */
+.history-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  width: 100%; /* Ширина блоку */
+  max-width: 800px; /* Максимальна ширина */
 }
+
+/* Стилі для фото гурту */
+.band-photo {
+  border: 4px solid #fd5400; /* Оранжева рамка */
+  border-radius: 10px; /* Закруглені кути */
+  overflow: hidden; /* Щоб зображення не виходило за рамки */
+  position: relative;
+  flex-shrink: 0;
+}
+
+.band-photo img {
+  display: block;
+  max-width: 400px;
+  height: auto;
+}
+
+.band-photo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Напівпрозорий чорний фон */
+}
+
+/* Стилі для тексту про гурт */
+.history-text {
+  border: 4px solid #fd5400; /* Оранжева рамка */
+  border-radius: 10px; /* Закруглені кути */
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5); /* Напівпрозорий чорний фон */
+  flex: 1;
+}
+
+.history-text h2 {
+  color: #fd5400;
+  margin-bottom: 10px;
+}
+
+.history-text p {
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* Стилі для блоку з Честером Беннінгтоном */
+.chester-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 90%; /* Ширина блоку */
+  max-width: 800px; /* Максимальна ширина */
+}
+
+/* Стилі для тексту про Честера */
+.chester-text {
+  border: 4px solid #fd5400; /* Оранжева рамка */
+  border-radius: 10px; /* Закруглені кути */
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5); /* Напівпрозорий чорний фон */
+  flex: 1;
+}
+
+.chester-text h2 {
+  color: #fd5400;
+  margin-bottom: 10px;
+}
+
+.chester-text p {
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* Стилі для фото Честера */
+.chester-photo {
+  border: 4px solid #fd5400; /* Оранжева рамка */
+  border-radius: 10px; /* Закруглені кути */
+  overflow: hidden; /* Щоб зображення не виходило за рамки */
+  position: relative;
+  flex-shrink: 0;
+}
+
+.chester-photo img {
+  display: block;
+  max-width: 400px;
+  height: auto;
+}
+
+.chester-photo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Напівпрозорий чорний фон */
+}
+
+/* Анімації при наведенні */
+.band-photo:hover img, .chester-photo:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+
