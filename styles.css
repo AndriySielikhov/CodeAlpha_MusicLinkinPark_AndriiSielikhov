@@ -1,0 +1,449 @@
+@font-face {
+  font-family: 'LinkinPark';
+  src: url('./font/Blacknorthdemo-mLE25.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+
+
+
+
+
+
+/* Загальні стилі */
+body {
+  font-family: 'LinkinPark', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #FFFFFF;
+  background-color: #0A0A0A;
+}
+
+
+
+
+
+
+
+
+header {
+  background: linear-gradient(45deg, #000000, #5757578b);
+  padding: 9px 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 5px 30px #fd5400;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo span {
+  color: #fd5400;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 
+      -2px -2px 0 #000000,  
+       2px -2px 0 #0000006f,
+      -2px  2px 0 #000000,  
+       2px  2px 0 #000000; /* Біла обводка */
+  letter-spacing: 4px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fd5400;
+  text-decoration: none;
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
+  letter-spacing: 4px;
+  text-shadow: 
+      -2px -2px 0 #000000,  
+       2px -2px 0 #0000006f,
+      -2px  2px 0 #000000,  
+       2px  2px 0 #000000; /* Біла обводка */
+}
+
+nav ul li a:hover {
+  color: #FFD700;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Сторінки */
+.page {
+  display: none;
+  padding: 20px;
+}
+
+.page.active {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Головна сторінка */
+#main {
+  text-align: center;
+  position: relative;
+}
+
+.logo-container {
+  margin-top: 50px;
+}
+
+.logo {
+  width: 300px;
+}
+
+.background-effects {
+  position: fixed; /* Змінено з absolute на fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden; /* Щоб уникнути прокрутки */
+}
+
+.light-effect, .smoke-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.light-effect {
+  background: radial-gradient(circle, rgba(255, 87, 34, 0.2), rgba(0, 0, 0, 0));
+  animation: light 3s infinite alternate;
+}
+
+.smoke-effect {
+  background: url('./image/fon.jpeg') no-repeat center center/cover;
+  animation: smoke 5s infinite linear;
+}
+
+@keyframes light {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes smoke {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+.text-container {
+  position: absolute;
+  top: 1000%; /* Змінено з 50% на 70% для опускання тексту нижче */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1460px;
+  max-width: 1500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fd5400;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 4px; /* Збільшує відстань між літерами */
+  line-height: 2; /* Збільшує відстань між рядками */
+  text-shadow: 
+      -2px -2px 0 #000000,  
+       2px -2px 0 #0000006f,
+      -2px  2px 0 #000000,  
+       2px  2px 0 #000000; /* Біла обводка */
+}
+
+/* Стилі для тексту зліва та справа */
+.left-text, .right-text {
+  text-align: center; /* Вирівнювання тексту по центру */
+}
+
+.left-text {
+  margin-right: auto; /* Відступ від центру вліво */
+}
+
+.right-text {
+  margin-left: auto; /* Відступ від центру вправо */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Сторінка плейлістів */
+#playlists {
+  text-align: center;
+  background: url('./image/fon-1.jpg') no-repeat center center/cover;
+}
+
+.playlist-carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  margin-top: 105px;
+}
+
+.playlist-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 400px;
+  height: 300px;
+}
+
+.playlist-cover {
+  position: absolute;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.playlist-cover img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Центральне зображення */
+.playlist-cover.center {
+  width: 400px; /* Ще більший розмір центральної обкладинки */
+  z-index: 3;
+  opacity: 1;
+  transform: scale(1.1); /* Робимо центральне зображення більшим */
+}
+
+/* Бічні зображення */
+.playlist-cover.left {
+  width: 250px; /* Збільшена ліва обкладинка */
+  opacity: 0.7;
+  z-index: 2;
+  transform: translateX(-400px); /* Відсуваємо вліво */
+}
+
+.playlist-cover.right {
+  width: 250px; /* Збільшена права обкладинка */
+  opacity: 0.7;
+  z-index: 2;
+  transform: translateX(400px); /* Відсуваємо вправо */
+}
+
+
+
+
+.playlist-description {
+  text-align: center;
+}
+
+#open-playlist {
+  padding: 10px 20px;
+  background-color: #FF5722;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+#open-playlist:hover {
+  background-color: #E53935;
+}
+
+
+
+
+.playlist-description {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#playlist-title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+#playlist-info {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+
+.playlist-button {
+  padding: 10px 20px;
+  background-color: #FF5722;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.playlist-button:hover {
+  background-color: #E53935;
+}
+
+
+
+
+/* Стилі для модального вікна */
+.modal {
+  display: none; /* Приховати за замовчуванням */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Напівпрозорий чорний фон */
+  z-index: 1000; /* Щоб модальне вікно було поверх усього */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.visible {
+  display: flex; /* Показати модальне вікно */
+}
+
+.modal-content {
+  background-color: rgb(0, 0, 0);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.playlist-info {
+  margin-bottom: 20px;
+}
+
+.playlist-images img {
+  width: 100%;
+  max-width: 300px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+#modal-track-list {
+  list-style: none;
+  padding: 0;
+}
+
+#modal-track-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#modal-track-list li img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+#close-modal {
+  margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+/* Сторінка історії */
+#history {
+  text-align: center;
+}
+
+.history-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.history-content img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  margin-top: 20px;
+}

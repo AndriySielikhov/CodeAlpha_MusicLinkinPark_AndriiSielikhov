@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linkin Park Music Player</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <!-- Шапка з меню -->
+  <header>
+    <div class="logo">
+      <img src="logo.svg" alt="Linkin Park Logo">
+
+      <span>My Player</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#" data-page="main">Home</a></li>
+        <li><a href="#" data-page="playlists">Playlists</a></li>
+        <li><a href="#" data-page="history">History</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Головна сторінка -->
+  
+  <!-- Головна сторінка -->
+  <section id="main" class="page active">
+    <div class="background-effects">
+      <div class="light-effect"></div>
+      <div class="smoke-effect"></div>
+    </div>
+
+    <!-- Контейнер для тексту зліва та справа -->
+    <div class="text-container">
+      <div class="left-text">
+        <p>Through every <br>broken note, <br>through every<br> shattered beat — we find <br>ourselves again</p>
+      </div>
+      <div class="right-text">
+        <p>No matter <br>how loud the <br>world gets,<br> the right song can still<br> break through the noise</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="playlists" class="page">
+  <h2>Playlists</h2>
+  <div class="playlist-carousel">
+    <div class="playlist-container">
+      <div class="playlist-cover left" data-index="0" data-description="Опис першого плейліста..." data-link="playlist1">
+        <img src="./image/playlist1/play1.jpg" alt="Hybrid Theory">
+      </div>
+      <div class="playlist-cover center" data-index="1" data-description="Опис другого плейліста..." data-link="playlist2">
+        <img src="./image/playlist2/play2.jpg" alt="Meteora">
+      </div>
+      <div class="playlist-cover right" data-index="2" data-description="Опис третього плейліста..." data-link="playlist3">
+        <img src="./image/playlist3/play3.jpg" alt="Minutes to Midnight">
+      </div>
+    </div>
+    <div class="playlist-description">
+      <h2 id="playlist-title">Hybrid Theory</h2>
+      <p id="playlist-info">Опис плейліста Hybrid Theory...</p>
+      <button id="open-playlist" class="playlist-button">Відкрити плейліст</button>
+    </div>
+  </div>
+  </section>
+
+  <!-- Модальне вікно для деталей плейліста -->
+  <div id="playlist-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="playlist-info">
+        <h2 id="modal-title">Hybrid Theory</h2>
+        <p id="modal-description">Опис плейліста Hybrid Theory...</p>
+        <div class="playlist-images">
+          <img src="assets/images/playlist1_photo1.jpg" alt="Фото 1">
+          <img src="assets/images/playlist1_photo2.jpg" alt="Фото 2">
+        </div>
+      </div>
+      <div class="playlist-tracks">
+        <h3>Пісні</h3>
+        <ul id="modal-track-list">
+          <!-- Треки будуть додані через JavaScript -->
+        </ul>
+      </div>
+      <button id="close-modal" class="playlist-button">Закрити</button>
+    </div>
+  </div>
+
+  <!-- Сторінка історії -->
+  <section id="history" class="page">
+    <h2>Історія Linkin Park</h2>
+    <div class="history-content">
+      <p>
+        Linkin Park — американський рок-гурт, заснований у 1996 році. Група стала відомою завдяки своєму унікальному стилю, який поєднує альтернативний рок, ню-метал та електронну музику.
+      </p>
+      <p>
+        Честер Беннінгтон, легендарний вокаліст групи, зробив величезний внесок у розвиток музики. Його емоційний вокал став візитівкою Linkin Park.
+      </p>
+      <img src="assets/images/band.jpg" alt="Linkin Park">
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

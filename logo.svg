@@ -1,0 +1,7 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="50,20 150,20 180,70 100,180 20,70" 
+    fill="#fd5400" stroke="black" stroke-width="5"/>
+  <text x="50%" y="45%" font-family="Arial, sans-serif" font-size="55" 
+    font-weight="bold" fill="black" stroke="black" stroke-width="1" 
+    text-anchor="middle" alignment-baseline="middle">LP</text>
+</svg>
