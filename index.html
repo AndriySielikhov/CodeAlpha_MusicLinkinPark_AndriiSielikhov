@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Linkin Park Music Player</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-
 </head>
 <body>
-  <!-- Шапка з меню -->
+  <!-- Header with Menu -->
   <header>
     <div class="logo">
       <img src="logo.svg" alt="Linkin Park Logo">
-
-      <span>My Player</span>
+      <span>LINKIN PARK</span>
     </div>
     <nav>
       <ul>
@@ -25,108 +23,125 @@
     </nav>
   </header>
 
-  <!-- Головна сторінка -->
-  
-  <!-- Головна сторінка -->
+  <!-- Main Page -->
   <section id="main" class="page active">
     <div class="background-effects">
       <div class="light-effect"></div>
       <div class="smoke-effect"></div>
     </div>
 
-    <!-- Контейнер для тексту зліва та справа -->
+    <!-- Container for Left and Right Text -->
     <div class="text-container">
       <div class="left-text">
-        <p>Through every <br>broken note, <br>through every<br> shattered beat — we find <br>ourselves again</p>
+        <p>Beyond the stars,<br>where echoes drift,<br>our souls ignite<br>in cosmic rifts</p>
       </div>
       <div class="right-text">
-        <p>No matter <br>how loud the <br>world gets,<br> the right song can still<br> break through the noise</p>
+        <p>Through endless voids,<br>the sound takes flight,<br>a galaxy hums<br>in infinite light</p>
       </div>
     </div>
   </section>
 
+  <!-- Playlists Page -->
   <section id="playlists" class="page">
-  <h2>Playlists</h2>
-  <div class="playlist-carousel">
-    <div class="playlist-container">
-      <div class="playlist-cover left" data-index="0" data-description="Опис першого плейліста..." data-link="playlist1">
-        <img src="./image/playlist1/play1.jpg" alt="Hybrid Theory">
+    <h2>Playlists</h2>
+    <div class="playlist-carousel">
+      <div class="playlist-container">
+        <div class="playlist-cover left" data-index="0" data-description="Description of the first playlist..." data-link="playlist1">
+          <img src="./image/playlist1/play1.jpg" alt="Hybrid Theory">
+        </div>
+        <div class="playlist-cover center" data-index="1" data-description="Description of the second playlist..." data-link="playlist2">
+          <img src="./image/playlist2/play2.jpg" alt="Meteora">
+        </div>
+        <div class="playlist-cover right" data-index="2" data-description="Description of the third playlist..." data-link="playlist3">
+          <img src="./image/playlist3/play3.jpg" alt="Minutes to Midnight">
+        </div>
       </div>
-      <div class="playlist-cover center" data-index="1" data-description="Опис другого плейліста..." data-link="playlist2">
-        <img src="./image/playlist2/play2.jpg" alt="Meteora">
-      </div>
-      <div class="playlist-cover right" data-index="2" data-description="Опис третього плейліста..." data-link="playlist3">
-        <img src="./image/playlist3/play3.jpg" alt="Minutes to Midnight">
+      <div class="playlist-description">
+        <h2 id="playlist-title">Hybrid Theory</h2>
+        <p id="playlist-info">Description of the Hybrid Theory playlist...</p>
+        <button id="open-playlist" class="playlist-button">Open Playlist</button>
       </div>
     </div>
-    <div class="playlist-description">
-      <h2 id="playlist-title">Hybrid Theory</h2>
-      <p id="playlist-info">Опис плейліста Hybrid Theory...</p>
-      <button id="open-playlist" class="playlist-button">Відкрити плейліст</button>
-    </div>
-  </div>
   </section>
 
-  <!-- Модальне вікно для деталей плейліста -->
+  <!-- Modal Window for Playlist Details -->
   <div id="playlist-modal" class="modal hidden">
     <div class="modal-content">
       <div class="playlist-info">
         <h2 id="modal-title">Hybrid Theory</h2>
-        <p id="modal-description">Опис плейліста Hybrid Theory...</p>
+        <p id="modal-description">Description of the Hybrid Theory playlist...</p>
         <div class="playlist-images">
-          <img src="assets/images/playlist1_photo1.jpg" alt="Фото 1">
-          <img src="assets/images/playlist1_photo2.jpg" alt="Фото 2">
+          <img src="assets/images/playlist1_photo1.jpg" alt="Photo 1">
         </div>
       </div>
       <div class="playlist-tracks">
-        <h3>Пісні</h3>
+        <h3>Tracks</h3>
         <ul id="modal-track-list">
-          <!-- Треки будуть додані через JavaScript -->
+          <!-- Tracks will be added via JavaScript -->
         </ul>
       </div>
-      <button id="close-modal" class="playlist-button">Закрити</button>
+      <button id="close-modal" class="playlist-button">Close</button>
     </div>
   </div>
 
-  <!-- Сторінка історії -->
-
-  <!-- Сторінка 3 -->
-  <!-- Сторінка 3 -->
+  <!-- History Page -->
   <section id="history" class="page">
     <div class="history-wrapper">
-      <!-- Блок з історією гурту -->
+      <!-- Section Title -->
+      <div class="section-title">
+        <h1>Linkin Park: A Legend That Redefined Rock</h1>
+      </div>
+
+      <!-- Band History Block -->
       <div class="history-box">
-        <!-- Фото гурту зліва -->
         <div class="band-photo">
           <img src="./image/peop.jpg" alt="Linkin Park" />
+          <div class="overlay">
+            <span>1996 - Present</span>
+          </div>
         </div>
-        <!-- Текст про гурт -->
         <div class="history-text">
-          <h2>Історія Linkin Park</h2>
+          <h2>Linkin Park History</h2>
           <p>
-            Linkin Park — американський рок-гурт, заснований у 1996 році. Група стала відомою завдяки своєму унікальному стилю, який поєднує альтернативний рок, ню-метал та електронну музику.
+            Linkin Park is an American rock band formed in 1996 in Agoura Hills, California, originally under the name Xero. The lineup included Mike Shinoda, Brad Delson, and Rob Bourdon, later joined by Joe Hahn, Dave "Phoenix" Farrell, and Chester Bennington. The band skyrocketed to fame with their debut album *Hybrid Theory* (2000), which went diamond in the U.S. Their unique style—blending nu-metal, alternative rock, and electronic music—defined the sound of a generation.
+          </p>
+          <p>
+            With hits like *In the End*, *Numb*, and *Crawling*, Linkin Park became the voice of the 2000s youth. They experimented with genres, from the heavy metal of *Meteora* (2003) to the cinematic soundscapes of *A Thousand Suns* (2010). Despite the tragic loss of Chester in 2017, their music continues to inspire millions worldwide.
           </p>
         </div>
       </div>
 
-      <!-- Блок з Честером Беннінгтоном -->
+      <!-- Chester Bennington Block -->
       <div class="chester-box">
-        <!-- Текст про Честера -->
         <div class="chester-text">
-          <h2>Честер Беннінгтон</h2>
+          <h2>Chester Bennington: The Soul of the Band</h2>
           <p>
-            Честер Беннінгтон, легендарний вокаліст групи, зробив величезний внесок у розвиток музики. Його емоційний вокал став візитівкою Linkin Park.
+            Chester Bennington joined Linkin Park in 1999, becoming its iconic vocalist. His powerful voice and emotional depth breathed life into lyrics about struggle, pain, and hope. Born on March 20, 1976, in Phoenix, Arizona, Chester battled personal demons, which echoed through the band’s work.
+          </p>
+          <p>
+            His passing on July 20, 2017, shook the world, but Chester’s legacy lives on in every song. From *Breaking the Habit* to *One More Light*, his vocals remain a timeless symbol of strength and vulnerability.
           </p>
         </div>
-        <!-- Фото Честера справа -->
         <div class="chester-photo">
           <img src="./image/ches.jpg" alt="Chester Bennington" />
+          <div class="overlay">
+            <span>1976 - 2017</span>
+          </div>
         </div>
+      </div>
+
+      <!-- Fun Facts Block -->
+      <div class="fun-facts">
+        <h2>Fun Facts</h2>
+        <ul>
+          <li>The name "Linkin Park" is a play on "Lincoln Park" in Santa Monica, tweaked due to a taken domain.</li>
+          <li>*Hybrid Theory* was originally planned as Mike Shinoda’s solo project.</li>
+          <li>Chester recorded the vocals for *Numb* in a single take!</li>
+          <li>The band collaborated with Jay-Z, creating the iconic *Collision Course* (2004).</li>
+        </ul>
       </div>
     </div>
   </section>
-
-
 
   <script src="script.js"></script>
 </body>

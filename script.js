@@ -20,15 +20,6 @@ document.querySelectorAll('nav a').forEach(link => {
       targetPage.classList.add('active');
     }
   });
-
-
-
-
-  
-
-
-
-
   
 });
 
@@ -48,43 +39,40 @@ const playlists = [
   {
     id: "playlist1",
     title: "Hybrid Theory",
-    description: "Опис першого плейліста...",
+    description: "The iconic debut album by Linkin Park, featuring nu-metal hits like In the End and Crawling",
     images: [
-      "assets/images/playlist1_photo1.jpg",
-      "assets/images/playlist1_photo2.jpg"
+      "./image/play1-1.jpg"
     ],
     tracks: [
-      { name: "In the End", artist: "Linkin Park", image: "assets/images/in_the_end.jpg" },
-      { name: "Crawling", artist: "Linkin Park", image: "assets/images/crawling.jpg" },
-      { name: "Papercut", artist: "Linkin Park", image: "assets/images/papercut.jpg" }
+      { name: "In the End-", artist: "Linkin Park", image: "./image/playlist1/play1.jpg" },
+      { name: "Crawling-", artist: "Linkin Park", image: "./image/playlist1/play1.jpg" },
+      { name: "Papercut-", artist: "Linkin Park", image: "./image/playlist1/play1.jpg" }
     ]
   },
   {
     id: "playlist2",
     title: "Meteora",
-    description: "Опис другого плейліста...",
+    description: "A powerful follow-up album with emotional and energetic tracks like Numb and Breaking the Habit",
     images: [
-      "assets/images/playlist2_photo1.jpg",
-      "assets/images/playlist2_photo2.jpg"
+      "./image/play2-2.jpg"
     ],
     tracks: [
-      { name: "Numb", artist: "Linkin Park", image: "assets/images/numb.jpg" },
-      { name: "Faint", artist: "Linkin Park", image: "assets/images/faint.jpg" },
-      { name: "Breaking the Habit", artist: "Linkin Park", image: "assets/images/breaking_the_habit.jpg" }
+      { name: "Numb-", artist: "Linkin Park", image: "./image/playlist2/play2.jpg" },
+      { name: "Faint-", artist: "Linkin Park", image: "./image/playlist2/play2.jpg" },
+      { name: "Breaking the Habit-", artist: "Linkin Park", image: "./image/playlist2/play2.jpg" }
     ]
   },
   {
     id: "playlist3",
     title: "Minutes to Midnight",
-    description: "Опис третього плейліста...",
+    description: "A more experimental album blending rock and alternative sounds, including What I've Done and Shadow of the Day",
     images: [
-      "assets/images/playlist3_photo1.jpg",
-      "assets/images/playlist3_photo2.jpg"
+      "./image/play3-3.jpg"
     ],
     tracks: [
-      { name: "What I've Done", artist: "Linkin Park", image: "assets/images/what_ive_done.jpg" },
-      { name: "Bleed It Out", artist: "Linkin Park", image: "assets/images/bleed_it_out.jpg" },
-      { name: "Shadow of the Day", artist: "Linkin Park", image: "assets/images/shadow_of_the_day.jpg" }
+      { name: "What I've Done-", artist: "Linkin Park", image: "./image/playlist3/play3.jpg" },
+      { name: "Bleed It Out-", artist: "Linkin Park", image: "./image/playlist3/play3.jpg" },
+      { name: "Shadow of the Day-", artist: "Linkin Park", image: "./image/playlist3/play3.jpg" }
     ]
   }
 ];
@@ -161,6 +149,19 @@ playlistCovers.forEach((cover, index) => {
 // Ініціалізація
 updateCarousel();
 
+
+
+
+modalTrackList.addEventListener('click', (event) => {
+  const li = event.target.closest('li');
+  if (li) {
+    const index = Array.from(modalTrackList.children).indexOf(li);
+    const playlistId = openPlaylistButton.getAttribute('data-playlist-id');
+
+    // Переходимо на сторінку плеєра
+    window.location.href = `player.html?playlistId=${playlistId}&trackIndex=${index}`;
+  }
+});
 
 
 

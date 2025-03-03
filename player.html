@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Orange Music Player</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Arial', sans-serif;
+          background-image: url('./image/play-fon.jpg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          height: 100vh;
+          margin: 0;
+          color: #fff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative; /* Для псевдоелемента */
+      }
+
+      body::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.7); /* Затемнення на 50% */
+          z-index: -1; /* Щоб шар був під контентом */
+      }
+
+
+
+        .player {
+            background: #000000;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(253, 84, 0, 0.6);
+            width: 350px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-container {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 20px auto;
+        }
+
+        .track-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid #000000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .track-image:hover {
+            transform: scale(1.05);
+        }
+
+        .progress-ring {
+            position: absolute;
+            top: 2px;
+            left: -99px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+
+        .progress-ring::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 8px solid transparent;
+            border-top: 9px solid #fd5400;
+            animation: rotateProgress 2s linear infinite;
+            box-shadow: 0 0 20px rgba(253, 84, 0, 0.8);
+        }
+
+        @keyframes rotateProgress {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .play-pause {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fd5400;
+            border: none;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(253, 84, 0, 0.9);
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .play-pause:hover {
+            background: #ff751a;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .player-controls {
+            display: flex;
+            justify-content: space-between;
+            margin: 1px 10px;
+        }
+
+        .control-btn {
+            background: transparent;
+            border: none;
+            color: #fd5400;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .control-btn:hover {
+            color: #ff751a;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(253, 84, 0, 0.7);
+        }
+
+        .track-info {
+            margin-bottom: 15px;
+        }
+
+        .track-name {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(253, 84, 0, 0.3);
+        }
+
+        .track-artist {
+            font-size: 16px;
+            color: #ffae00;
+            text-shadow: 0 0 3px rgba(253, 84, 0, 0.2);
+        }
+
+        .time {
+            font-size: 14px;
+            color: #b3b3b3;
+            margin-top: 15px;
+            text-shadow: 0 0 3px rgba(253, 84, 0, 0.2);
+        }
+
+        .additional-controls {
+            background: transparent;
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 40px;
+            color: #fd5400;
+        }
+
+        .additional-btn {
+            background: transparent;
+            border: none;
+            color: #fd5400;
+            font-size: 22px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .additional-btn:hover {
+            color: #ff751a;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(253, 84, 0, 0.7);
+        }
+
+        .progress-bar-container {
+            margin: 20px 0;
+            color: #fff;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #ff8000;
+            border-radius: 10px;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            outline: none;
+        }
+
+        .progress-bar::-webkit-slider-thumb {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #fd5400;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(253, 84, 0, 0.8);
+            transition: transform 0.3s;
+        }
+
+        .progress-bar::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .back-button {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: transparent;
+            border: none;
+            color: #fd5400;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .back-button:hover {
+            color: #ff751a;
+            transform: rotate(180deg) scale(1.1);
+            box-shadow: 0 0 15px rgba(253, 84, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="player">
+        <button class="back-button" id="back-button">🔙</button>
+        <div class="progress-container">
+            <img id="track-image" class="track-image" src="" alt="Обкладинка треку">
+            <div class="progress-ring"></div>
+            <button class="play-pause" id="play-pause">⏯</button>
+        </div>
+        <div class="player-controls">
+            <button class="control-btn" id="prev-track">⏮</button>
+            <button class="control-btn" id="next-track">⏭</button>
+        </div>
+        <div class="track-info">
+            <div class="track-name" id="track-name">Назва треку</div>
+            <div class="track-artist" id="track-artist">Виконавець</div>
+        </div>
+        <div class="progress-bar-container">
+            <span id="current-time">0:00</span>
+            <input type="range" id="seek" class="progress-bar" min="0" max="100" value="0">
+            <span id="total-time">0:00</span>
+        </div>
+        <div class="additional-controls">
+            <button class="additional-btn" id="shuffle">🕯</button>
+            <button class="additional-btn" id="repeat">⊰✫⊱</button>
+            <button class="additional-btn">♡</button>
+            <button class="additional-btn">⋯</button>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const trackIndex = urlParams.get('trackIndex');
+        const playlistId = urlParams.get('playlistId');
+
+        const playlists = [
+            {
+                id: "playlist1",
+                tracks: [
+                    { name: "In the End", artist: "Linkin Park", image: "./image/playlist1/play1.jpg", audio: "./music/Linkin Park - In The End.mp33" },
+                    { name: "Crawling", artist: "Linkin Park", image: "./image/playlist1/play1.jpg", audio: "./music/Linkin Park - Crawling.mp3" },
+                    { name: "Papercut", artist: "Linkin Park", image: "./image/playlist1/play1.jpg", audio: "./music/Linkin Park - Papercut.mp3" }
+                ]
+            },
+            {
+                id: "playlist2",
+                tracks: [
+                    { name: "Numb", artist: "Linkin Park", image: "./image/playlist2/play2.jpg", audio: "./music/Linkin Park - NUMB.mp3" },
+                    { name: "Faint", artist: "Linkin Park", image: "./image/playlist2/play2.jpg", audio: "./music/Linkin Park - Faint.mp3" },
+                    { name: "Breaking the Habit", artist: "Linkin Park", image: "./image/playlist2/play2.jpg", audio: "./music/Linkin Park - Breaking The Habit.mp3" }
+                ]
+            },
+            {
+                id: "playlist3",
+                tracks: [
+                    { name: "What I've Done", artist: "Linkin Park", image: "./image/playlist3/play3.jpg", audio: "./music/Linkin Park - What I've Done.mp3" },
+                    { name: "Bleed It Out", artist: "Linkin Park", image: "./image/playlist3/play3.jpg", audio: "./music/Linkin Park - Bleed It Out.mp3" },
+                    { name: "Shadow of the Day", artist: "Linkin Park", image: "./image/playlist3/play3.jpg", audio: "./music/Linkin Park - Shadow Of The Day.mp3" }
+                ]
+            }
+        ];
+
+        const selectedPlaylist = playlists.find(playlist => playlist.id === playlistId);
+        const track = selectedPlaylist.tracks[trackIndex];
+
+        const trackImage = document.getElementById('track-image');
+        const trackName = document.getElementById('track-name');
+        const trackArtist = document.getElementById('track-artist');
+        const playPauseButton = document.getElementById('play-pause');
+        const prevTrackButton = document.getElementById('prev-track');
+        const nextTrackButton = document.getElementById('next-track');
+        const seekControl = document.getElementById('seek');
+        const currentTimeDisplay = document.getElementById('current-time');
+        const totalTimeDisplay = document.getElementById('total-time');
+
+        let audio = new Audio(track.audio);
+        let isPlaying = false;
+
+        trackImage.src = track.image;
+        trackName.textContent = track.name;
+        trackArtist.textContent = track.artist;
+
+        audio.addEventListener('loadedmetadata', () => {
+            totalTimeDisplay.textContent = formatTime(audio.duration);
+            seekControl.max = 100;
+        });
+
+        playPauseButton.addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                audio.play();
+                playPauseButton.textContent = '⏸';
+            } else {
+                audio.pause();
+                playPauseButton.textContent = '⏯';
+            }
+        });
+
+        prevTrackButton.addEventListener('click', () => {
+            const newIndex = (parseInt(trackIndex) - 1 + selectedPlaylist.tracks.length) % selectedPlaylist.tracks.length;
+            window.location.href = `player.html?playlistId=${playlistId}&trackIndex=${newIndex}`;
+        });
+
+        nextTrackButton.addEventListener('click', () => {
+            const newIndex = (parseInt(trackIndex) + 1) % selectedPlaylist.tracks.length;
+            window.location.href = `player.html?playlistId=${playlistId}&trackIndex=${newIndex}`;
+        });
+
+        seekControl.addEventListener('input', () => {
+            audio.currentTime = (audio.duration * seekControl.value) / 100;
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            seekControl.value = (audio.currentTime / audio.duration) * 100;
+            currentTimeDisplay.textContent = formatTime(audio.currentTime);
+        });
+
+        document.getElementById('back-button').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+
+        document.getElementById('shuffle').addEventListener('click', () => {
+            console.log("Shuffle clicked");
+        });
+
+        document.getElementById('repeat').addEventListener('click', () => {
+            console.log("Repeat clicked");
+        });
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+    </script>
+</body>
+</html>
