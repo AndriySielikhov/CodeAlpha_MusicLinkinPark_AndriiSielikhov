@@ -29,4 +29,4 @@ Welcome to **Linkin Park Music Hub** – a fan-made website dedicated to the leg
 ## 📌 How to Use  
 1. Clone the repository:  
    ```sh
-   git clone https://github.com/AndriySielikhov/galleryMarvel_CodeAlpha.git
+   git clone https://github.com/AndriySielikhov/CodeAlpha_MusicLinkinPark_AndriiSielikhov.git
