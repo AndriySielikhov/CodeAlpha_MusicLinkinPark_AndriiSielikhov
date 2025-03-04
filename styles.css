@@ -246,6 +246,7 @@ nav ul li a:hover {
 /* Сторінка плейлістів */
 #playlists {
   text-align: center;
+  
 }
 
 .playlist-carousel {
@@ -785,3 +786,65 @@ nav ul li a:hover {
 }
 
 
+@media (min-width: 768px) { /* Планшети */
+  .header {
+    padding: 1rem 10%;
+  }
+
+  .text-container {
+    flex-direction: row; /* Рядок для більших екранів */
+  }
+
+  .modal-content {
+    flex-direction: row; /* Рядок для планшетів і десктопів */
+  }
+
+  .history-box, .chester-box {
+    flex-direction: row; /* Рядок для планшетів і десктопів */
+  }
+
+  .section-title h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) { /* Десктопи */
+  .logo {
+    width: 300px;
+  }
+
+  .playlist-container {
+    width: 400px;
+    height: 300px;
+  }
+
+  .section-title h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) { /* Мобільні */
+  nav ul li {
+    margin: 0.5rem;
+  }
+
+  nav ul li a {
+    font-size: 1rem;
+  }
+
+  .playlist-cover.left, .playlist-cover.right {
+    display: none; /* Ховаємо бічні обкладинки на малих екранах */
+  }
+
+  .playlist-cover.center {
+    transform: scale(1); /* Без збільшення */
+  }
+
+  #playlist-title {
+    font-size: 1.2rem;
+  }
+
+  #playlist-info {
+    font-size: 1rem;
+  }
+}
